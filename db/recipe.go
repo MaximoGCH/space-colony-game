@@ -159,13 +159,14 @@ func CreateRecipeDatabase() (RecipeDb, RecipeDb) {
 
 	recipes := RecipeDb{}
 
-	for _, unsortedRecipeList := range unsortedRecipes {
+	for key, unsortedRecipeList := range unsortedRecipes {
 		recipeList := make([]*Recipe, len(unsortedRecipeList))
 		copy(recipeList, unsortedRecipeList)
 		sort.Slice(recipeList, func(i, j int) bool {
 			return len(recipeList[i].Consume)+len(recipeList[i].NoConsume) >
 				len(recipeList[j].Consume)+len(recipeList[j].NoConsume)
 		})
+		recipes[key] = recipeList
 	}
 
 	return recipes, unsortedRecipes
