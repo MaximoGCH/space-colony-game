@@ -23,6 +23,77 @@ func CreateRecipeDatabase() RecipeDb {
 				Result:  Human,
 				Amount:  1,
 			},
+			{
+				NoConsume: []ResourceType{
+					Human,
+					Human,
+					Human,
+					Human,
+				},
+				Consume: []ResourceType{},
+				Result:  Human,
+				Amount:  2,
+			},
+			{
+				NoConsume: []ResourceType{
+					Human,
+				},
+				Consume: []ResourceType{
+					Wood,
+					Wood,
+					Stone,
+				},
+				Result: Axe,
+				Amount: 1,
+			},
+			{
+				NoConsume: []ResourceType{
+					Human,
+				},
+				Consume: []ResourceType{
+					Wood,
+					Stone,
+					Stone,
+				},
+				Result: Peak,
+				Amount: 1,
+			},
+			{
+				NoConsume: []ResourceType{
+					Human,
+				},
+				Consume: []ResourceType{
+					Stone,
+					Stone,
+					Stone,
+				},
+				Result: Casserole,
+				Amount: 1,
+			},
+			{
+				NoConsume: []ResourceType{
+					Human,
+					Casserole,
+				},
+				Consume: []ResourceType{
+					Food,
+					Wood,
+				},
+				Result: Food,
+				Amount: 4,
+			},
+			{
+				NoConsume: []ResourceType{
+					Human,
+					Casserole,
+				},
+				Consume: []ResourceType{
+					Human,
+					Wood,
+				},
+				Result: Food,
+				Amount: 1,
+			},
 		},
 		Tree: {
 			{
@@ -41,6 +112,43 @@ func CreateRecipeDatabase() RecipeDb {
 				Consume: []ResourceType{},
 				Result:  Wood,
 				Amount:  2,
+			},
+			{
+				NoConsume: []ResourceType{
+					Human,
+					Human,
+				},
+				Consume: []ResourceType{},
+				Result:  Food,
+				Amount:  2,
+			},
+		},
+		Rock: {
+			{
+				NoConsume: []ResourceType{
+					Human,
+				},
+				Consume: []ResourceType{},
+				Result:  Stone,
+				Amount:  1,
+			},
+			{
+				NoConsume: []ResourceType{
+					Human,
+					Peak,
+				},
+				Consume: []ResourceType{},
+				Result:  Stone,
+				Amount:  2,
+			},
+			{
+				NoConsume: []ResourceType{
+					Human,
+					Human,
+				},
+				Consume: []ResourceType{},
+				Result:  Brick,
+				Amount:  1,
 			},
 		},
 	}

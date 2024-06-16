@@ -16,6 +16,7 @@ const (
 	Axe
 	Peak
 	Casserole
+	Brick
 )
 
 type Resource struct {
@@ -40,6 +41,7 @@ func CreateResourceList() ResourceList {
 		Axe,
 		Peak,
 		Casserole,
+		Brick,
 	}
 }
 
@@ -86,6 +88,12 @@ func CreateResourceDatabase(assets *assets.Assets) ResourceDb {
 			Name:       "Casserole",
 			BigImage:   assets.GetSprite("embed/sprites/casserole-big"),
 			SmallImage: assets.GetSprite("embed/sprites/casserole-small"),
+		},
+		Brick: &Resource{
+			Type:       Brick,
+			Name:       "Brick",
+			BigImage:   assets.GetSprite("embed/sprites/brick"),
+			SmallImage: assets.GetSprite("embed/sprites/brick-small"),
 		},
 	}
 }
