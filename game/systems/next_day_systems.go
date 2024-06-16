@@ -16,9 +16,15 @@ func UpdateNextDay(globalState *state.GlobalState) {
 	if globalState.GameState.NextDayButton.IsJustActive &&
 		globalState.GameState.NextDayTransitionPhase == 0 {
 		// set next day state
-		globalState.GameState.NextDayState = &models.NextDay{
-			Timer: 0,
+		fixedDay := globalState.GameState.Days
+		if fixedDay >= 6 {
+			fixedDay = 6
 		}
+		globalState.GameState.NextDayState = &models.NextDay{
+			Timer:    0,
+			FixedDay: fixedDay,
+		}
+
 		globalState.GameState.NextDayTransitionPhase = 1
 	}
 

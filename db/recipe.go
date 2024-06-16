@@ -15,8 +15,8 @@ type (
 	RecipeDb map[StructureType][]*Recipe
 )
 
-func CreateRecipeDatabase() RecipeDb {
-	recipes := RecipeDb{
+func CreateRecipeDatabase() (RecipeDb, RecipeDb) {
+	unsortedRecipes := RecipeDb{
 		AllHouses: {
 			{
 				NoConsume: []ResourceType{
@@ -157,14 +157,18 @@ func CreateRecipeDatabase() RecipeDb {
 		},
 	}
 
-	for _, recipeList := range recipes {
+	recipes := RecipeDb{}
+
+	for _, unsortedRecipeList := range unsortedRecipes {
+		recipeList := make([]*Recipe, len(unsortedRecipeList))
+		copy(recipeList, unsortedRecipeList)
 		sort.Slice(recipeList, func(i, j int) bool {
 			return len(recipeList[i].Consume)+len(recipeList[i].NoConsume) >
 				len(recipeList[j].Consume)+len(recipeList[j].NoConsume)
 		})
 	}
 
-	return recipes
+	return recipes, unsortedRecipes
 }
 
 func (recipes RecipeDb) GetAllIngredientsRecipes(structureType StructureType, resources []ResourceType) (*Recipe, []ResourceType) {

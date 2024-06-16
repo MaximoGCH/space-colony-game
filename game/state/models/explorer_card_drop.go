@@ -7,8 +7,8 @@ import (
 
 const (
 	ExplorerCardDropLen    = 6
-	ExplorerCardDropXStart = 700
-	ExplorerCardDropYStart = 36
+	ExplorerCardDropXStart = 850
+	ExplorerCardDropYStart = 96
 )
 
 type ExplorerCardDrop [ExplorerCardDropLen]*CardDrop

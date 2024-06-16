@@ -49,7 +49,7 @@ func DrawInventory(globalState *state.GlobalState, screen *ebiten.Image) {
 
 		custom_text.DrawOutlineText(screen,
 			fmt.Sprintf("x%v", item.Amount),
-			item.Bounds.PointAdd(shapes.Point{X: 4, Y: 12}),
+			item.Bounds.PointAdd(shapes.Point{X: 16, Y: 38}),
 			globalState.Assets.GetFont("embed/fonts/Kubasta"),
 		)
 	}

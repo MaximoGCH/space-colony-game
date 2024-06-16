@@ -37,6 +37,10 @@ func StartGameScene(globalState *state.GlobalState) {
 		}, "Next day"),
 		ExplorerDices: models.CreateExplorerDices(),
 		GameStarted:   false,
+		RecipeListControls: &models.RecipeListControls{
+			Scroll:      0,
+			MouseOffset: 0,
+		},
 	}
 
 	for i := 0; i < startRockResources; i++ {
@@ -111,6 +115,7 @@ func UpdateGameScene(globalState *state.GlobalState) {
 		globalState.GameState.StartTimer++
 	}
 
+	systems.UpdateRecipes(globalState)
 	systems.UpdateBoard(globalState)
 	systems.UpdateExplorerCardDrop(globalState)
 	systems.UpdateInventory(globalState)
@@ -128,6 +133,7 @@ func DrawGameScene(globalState *state.GlobalState, screen *ebiten.Image) {
 		B: 117,
 		A: 255,
 	})
+	systems.DrawRecipes(globalState, screen)
 	systems.DrawBoard(globalState, screen)
 	systems.DrawExplorerCardDrop(globalState, screen)
 	systems.DrawInventory(globalState, screen)

@@ -17,7 +17,7 @@ func UpdateExplorerCardDrop(globalState *state.GlobalState) {
 func DrawExplorerCardDrop(globalState *state.GlobalState, screen *ebiten.Image) {
 	custom_text.DrawOutlineText(screen,
 		"Exploration",
-		shapes.Point{X: models.ExplorerCardDropXStart - 16, Y: models.ExplorerCardDropYStart - 12},
+		shapes.Point{X: models.ExplorerCardDropXStart + 12, Y: models.ExplorerCardDropYStart - 12},
 		globalState.Assets.GetFont("embed/fonts/Kubasta"),
 	)
 

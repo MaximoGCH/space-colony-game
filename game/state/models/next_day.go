@@ -7,4 +7,5 @@ type NextDay struct {
 	DiceResult      bool
 	BoardCheckedPos int
 	HumanDied       int
+	FixedDay        int
 }

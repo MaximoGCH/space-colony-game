@@ -40,7 +40,7 @@ func Start() {
 	globalState := &state.GlobalState{
 		Assets: assets,
 		ScreenSize: shapes.Size{
-			Width: 740, Height: 460,
+			Width: 912, Height: 513,
 		},
 		Db:    db.CreateDb(assets),
 		Scene: state.GameScene,

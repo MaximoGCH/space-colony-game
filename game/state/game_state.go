@@ -19,4 +19,5 @@ type GameState struct {
 	Days                     int
 	GameStarted              bool
 	StartTimer               int
+	RecipeListControls       *models.RecipeListControls
 }

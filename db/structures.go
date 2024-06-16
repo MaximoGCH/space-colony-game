@@ -25,9 +25,21 @@ type Structure struct {
 	CardDropGroupNumber int
 }
 
-type StructureDb map[StructureType]*Structure
+type (
+	StructureDb   map[StructureType]*Structure
+	StructureList []StructureType
+)
 
-func createStructureDatabase(assets *assets.Assets) StructureDb {
+// for recipe list ui
+func CreateStructureList() StructureList {
+	return StructureList{
+		Tree,
+		Rock,
+		AllHouses,
+	}
+}
+
+func CreateStructureDatabase(assets *assets.Assets) StructureDb {
 	return StructureDb{
 		HouseLv1: &Structure{
 			Type:                HouseLv1,

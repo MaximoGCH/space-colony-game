@@ -33,8 +33,8 @@ const (
 	CardDropSize      = CardWidth + 4
 	CardDropGroupSize = CardHeight + 4
 	EmptyListLen      = BoardSizeW * BoardSizeH
-	BoardStartX       = 128
-	BoardStartY       = 8
+	BoardStartX       = 296
+	BoardStartY       = 64
 )
 
 func CreateBoard() Board {
