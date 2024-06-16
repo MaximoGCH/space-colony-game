@@ -42,8 +42,8 @@ func CreateInventory(resources db.ResourceDb, resourceOrder db.ResourceList, scr
 
 	// start humans and food
 	// todo: modify this to allow different planets
-	inventory[db.Human].Amount = 3
-	inventory[db.Food].Amount = 9
+	inventory[db.Human].Amount = 5
+	inventory[db.Food].Amount = 30
 
 	return inventory
 }

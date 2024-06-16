@@ -41,6 +41,7 @@ func StartGameScene(globalState *state.GlobalState) {
 			Scroll:      0,
 			MouseOffset: 0,
 		},
+		Days: 1,
 	}
 
 	for i := 0; i < startRockResources; i++ {

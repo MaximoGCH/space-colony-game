@@ -313,7 +313,7 @@ func UpdateNextDay(globalState *state.GlobalState) {
 		}
 
 		if globalState.GameState.NextDayState.Timer == 180 {
-			WaitAndGoToState(globalState, 0)
+			WaitAndNextState(globalState)
 		}
 
 	case 7:
