@@ -69,3 +69,10 @@ func (rectangle Rectangle) Center() Point {
 		Y: rectangle.Y + rectangle.Height/2,
 	}
 }
+
+func (size Size) Center() Point {
+	return Point{
+		X: size.Width / 2,
+		Y: size.Height / 2,
+	}
+}

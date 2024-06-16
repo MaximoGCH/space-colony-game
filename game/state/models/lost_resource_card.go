@@ -42,6 +42,5 @@ func (list *LostResourceCardList) RemoveIndex(index int, inventory Inventory) {
 	} else {
 		inventory.AddResource(item.Type, 1)
 	}
-	def[index] = def[len(def)-1]
-	*list = def[:len(def)-1]
+	*list = append(def[:index], def[index+1:]...)
 }

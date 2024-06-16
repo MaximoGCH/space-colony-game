@@ -1,5 +1,9 @@
 package db
 
+import (
+	"sort"
+)
+
 type Recipe struct {
 	NoConsume []ResourceType
 	Consume   []ResourceType
@@ -12,7 +16,7 @@ type (
 )
 
 func CreateRecipeDatabase() RecipeDb {
-	return RecipeDb{
+	recipes := RecipeDb{
 		AllHouses: {
 			{
 				NoConsume: []ResourceType{
@@ -152,6 +156,15 @@ func CreateRecipeDatabase() RecipeDb {
 			},
 		},
 	}
+
+	for _, recipeList := range recipes {
+		sort.Slice(recipeList, func(i, j int) bool {
+			return len(recipeList[i].Consume)+len(recipeList[i].NoConsume) >
+				len(recipeList[j].Consume)+len(recipeList[j].NoConsume)
+		})
+	}
+
+	return recipes
 }
 
 func (recipes RecipeDb) GetAllIngredientsRecipes(structureType StructureType, resources []ResourceType) (*Recipe, []ResourceType) {

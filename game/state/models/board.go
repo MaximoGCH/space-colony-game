@@ -41,7 +41,7 @@ func CreateBoard() Board {
 	return Board{}
 }
 
-func (board *Board) RandomEmptyPlace() shapes.Point {
+func (board *Board) EmptyPlaces() []shapes.Point {
 	var emptyList []shapes.Point = make([]shapes.Point, 0, BoardSizeW)
 	for i := 1; i < BoardSizeW; i++ {
 		for j := 0; j < BoardSizeH; j++ {
@@ -51,6 +51,12 @@ func (board *Board) RandomEmptyPlace() shapes.Point {
 			}
 		}
 	}
+
+	return emptyList
+}
+
+func (board *Board) RandomEmptyPlace() shapes.Point {
+	emptyList := board.EmptyPlaces()
 
 	if len(emptyList) == 0 {
 		return shapes.Point{X: -1, Y: -1}
@@ -68,6 +74,10 @@ func (board *Board) AddStructure(screenSize shapes.Size, structure *db.Structure
 	structurePos := position.ConstMul(GridSpace).PointAdd(shapes.Point{
 		X: BoardStartX, Y: BoardStartY,
 	})
+
+	if structure.Type == db.HouseLv1 {
+		structurePos = structurePos.PointSub(shapes.Point{X: 32, Y: 0})
+	}
 
 	cardDropXStartPos := (GridSize / 2) - ((structure.CardDropNumber * CardDropSize) / 2)
 	for i := 0; i < structure.CardDropGroupNumber; i++ {
