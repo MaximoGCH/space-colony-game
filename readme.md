@@ -1,8 +1,8 @@
-# //todo: Game name
+# Survive in Ionia
 
-By **MaximoGCH**
+Game for the Micro Jam, Made in 48h
 
-// todo: explain here the game
+By **MaximoGCH** and **Emorenom20**
 
 ## External assets included in the game
 

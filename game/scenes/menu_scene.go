@@ -3,6 +3,7 @@ package scenes
 import (
 	"image/color"
 
+	"github.com/MaximoGCH/space-colony-game/game/common/custom_text"
 	"github.com/MaximoGCH/space-colony-game/game/common/shapes"
 	"github.com/MaximoGCH/space-colony-game/game/state"
 	"github.com/MaximoGCH/space-colony-game/game/state/models"
@@ -59,6 +60,15 @@ func DrawMenuScene(globalState *state.GlobalState, screen *ebiten.Image) {
 		X: screenMiddlePos.X - 64,
 		Y: screenMiddlePos.Y - 64,
 	}.ToImageOptions())
+
+	custom_text.DrawOutlineText(screen,
+		"With love, made by MaximoGCH and Emorenom20, in 48h for the Micro Jam",
+		shapes.Point{
+			X: screenMiddlePos.X,
+			Y: globalState.ScreenSize.Height - 32,
+		},
+		globalState.Assets.GetFont("embed/fonts/Kubasta"),
+	)
 
 	systems.DrawButton(globalState, screen, globalState.GameState.StartButton)
 }

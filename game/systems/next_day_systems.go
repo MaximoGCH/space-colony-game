@@ -251,18 +251,30 @@ func UpdateNextDay(globalState *state.GlobalState) {
 
 		if globalState.GameState.NextDayState.DiceResult {
 			if globalState.GameState.NextDayState.Timer == 100 {
-				globalState.GameState.Board.AddStructure(globalState.ScreenSize,
-					globalState.Db.Structures[db.Tree], globalState.GameState.Board.RandomEmptyPlace())
+				emptyPoint := globalState.GameState.Board.RandomEmptyPlace()
+
+				if emptyPoint.X > 0 {
+					globalState.GameState.Board.AddStructure(globalState.ScreenSize,
+						globalState.Db.Structures[db.Tree], emptyPoint)
+				}
 			}
 
 			if globalState.GameState.NextDayState.Timer == 130 {
-				globalState.GameState.Board.AddStructure(globalState.ScreenSize,
-					globalState.Db.Structures[db.Rock], globalState.GameState.Board.RandomEmptyPlace())
+				emptyPoint := globalState.GameState.Board.RandomEmptyPlace()
+
+				if emptyPoint.X > 0 {
+					globalState.GameState.Board.AddStructure(globalState.ScreenSize,
+						globalState.Db.Structures[db.Rock], emptyPoint)
+				}
 			}
 
 			if globalState.GameState.NextDayState.Timer == 160 {
-				globalState.GameState.Board.AddStructure(globalState.ScreenSize,
-					globalState.Db.Structures[db.Tree], globalState.GameState.Board.RandomEmptyPlace())
+				emptyPoint := globalState.GameState.Board.RandomEmptyPlace()
+
+				if emptyPoint.X > 0 {
+					globalState.GameState.Board.AddStructure(globalState.ScreenSize,
+						globalState.Db.Structures[db.Tree], emptyPoint)
+				}
 			}
 		}
 
