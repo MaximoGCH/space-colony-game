@@ -125,6 +125,10 @@ func UpdateGameScene(globalState *state.GlobalState) {
 	systems.UpdateNextDay(globalState)
 	systems.UpdateNotifications(globalState)
 	systems.UpdateExplorerDices(globalState)
+
+	if globalState.GameState.GameOver {
+		StartLostScene(globalState, globalState.GameState.Days)
+	}
 }
 
 func DrawGameScene(globalState *state.GlobalState, screen *ebiten.Image) {

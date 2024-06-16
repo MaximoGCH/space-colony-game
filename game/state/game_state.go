@@ -20,6 +20,7 @@ type GameState struct {
 	GameStarted              bool
 	StartTimer               int
 	RecipeListControls       *models.RecipeListControls
+	GameOver                 bool
 
 	StartButton *models.Button
 }

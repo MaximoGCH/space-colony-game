@@ -146,7 +146,7 @@ func UpdateNextDay(globalState *state.GlobalState) {
 			} else {
 				carDropWithResources := false
 				for _, cardDrop := range globalState.GameState.ExplorerCardDrop {
-					if cardDrop.Type != db.Empty {
+					if cardDrop.Type == db.Human {
 						carDropWithResources = true
 						break
 					}
@@ -174,6 +174,25 @@ func UpdateNextDay(globalState *state.GlobalState) {
 
 		if globalState.GameState.NextDayState.SkipTurn &&
 			globalState.GameState.NextDayState.Timer == 120 {
+			for i, cardDrop := range globalState.GameState.ExplorerCardDrop {
+				if cardDrop.Type == db.Empty {
+					continue
+				}
+
+				globalState.GameState.ExplorerDices[i] = nil
+
+				globalState.GameState.LostResourceCard.Add(
+					&models.ResourceCard{
+						Type:        cardDrop.Type,
+						Position:    cardDrop.Bounds.Center(),
+						MouseOffset: shapes.Point{},
+					},
+					globalState.GameState.Inventory,
+					true,
+				)
+
+				cardDrop.Type = db.Empty
+			}
 			WaitAndGoToState(globalState, 6)
 		}
 
@@ -322,15 +341,29 @@ func UpdateNextDay(globalState *state.GlobalState) {
 			globalState.GameState.ExplorerDices[i] = nil
 		}
 
+		personNum := globalState.GameState.Inventory[db.Human].Amount
+
 		if globalState.GameState.NextDayState.Timer == 50 {
-			globalState.GameState.Days++
-			globalState.GameState.Notifications.Add(models.Text,
-				fmt.Sprintf("Day %v", globalState.GameState.Days))
+			if personNum <= 0 {
+				globalState.GameState.Notifications.Add(models.Text,
+					"There are nor more astronauts in the colony. Game Over")
+			} else {
+				globalState.GameState.Days++
+				globalState.GameState.Notifications.Add(models.Text,
+					fmt.Sprintf("Day %v", globalState.GameState.Days))
+			}
 		}
 
 		if globalState.GameState.NextDayState.Timer == 80 {
-			WaitAndGoToState(globalState, 0)
+			if personNum <= 0 {
+				WaitAndGoToState(globalState, 8)
+			} else {
+				WaitAndGoToState(globalState, 0)
+			}
 		}
+
+	case 8:
+		globalState.GameState.GameOver = true
 	}
 }
 
