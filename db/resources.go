@@ -41,7 +41,7 @@ func CreateResourceList() ResourceList {
 		Axe,
 		Peak,
 		Casserole,
-		Brick,
+		// Brick,
 	}
 }
 
@@ -89,11 +89,11 @@ func CreateResourceDatabase(assets *assets.Assets) ResourceDb {
 			BigImage:   assets.GetSprite("embed/sprites/casserole-big"),
 			SmallImage: assets.GetSprite("embed/sprites/casserole-small"),
 		},
-		Brick: &Resource{
-			Type:       Brick,
-			Name:       "Brick",
-			BigImage:   assets.GetSprite("embed/sprites/brick"),
-			SmallImage: assets.GetSprite("embed/sprites/brick-small"),
-		},
+		// Brick: &Resource{
+		// 	Type:       Brick,
+		// 	Name:       "Brick",
+		// 	BigImage:   assets.GetSprite("embed/sprites/brick"),
+		// 	SmallImage: assets.GetSprite("embed/sprites/brick-small"),
+		// },
 	}
 }

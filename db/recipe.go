@@ -96,7 +96,7 @@ func CreateRecipeDatabase() (RecipeDb, RecipeDb) {
 					Wood,
 				},
 				Result: Food,
-				Amount: 1,
+				Amount: 2,
 			},
 		},
 		Tree: {
@@ -145,15 +145,15 @@ func CreateRecipeDatabase() (RecipeDb, RecipeDb) {
 				Result:  Stone,
 				Amount:  2,
 			},
-			{
-				NoConsume: []ResourceType{
-					Human,
-					Human,
-				},
-				Consume: []ResourceType{},
-				Result:  Brick,
-				Amount:  1,
-			},
+			// {
+			// 	NoConsume: []ResourceType{
+			// 		Human,
+			// 		Human,
+			// 	},
+			// 	Consume: []ResourceType{},
+			// 	Result:  Brick,
+			// 	Amount:  1,
+			// },
 		},
 	}
 

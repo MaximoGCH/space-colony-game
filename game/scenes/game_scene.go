@@ -14,7 +14,7 @@ import (
 
 const (
 	startTreeResources = 6
-	startRockResources = 3
+	startRockResources = 4
 )
 
 func StartGameScene(globalState *state.GlobalState) {
