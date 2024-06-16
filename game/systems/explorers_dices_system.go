@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 
+	"github.com/MaximoGCH/space-colony-game/game/common/shapes"
 	"github.com/MaximoGCH/space-colony-game/game/state"
 	"github.com/hajimehoshi/ebiten/v2"
 )
@@ -34,6 +35,6 @@ func DrawExplorerDices(globalState *state.GlobalState, screen *ebiten.Image) {
 
 		position := cardDrop.Bounds.Center()
 		image := globalState.Assets.GetSprite(fmt.Sprintf("embed/sprites/dice-%v", dice.FaceNumber))
-		screen.DrawImage(image, position.ConstSub(24).ToImageOptions())
+		screen.DrawImage(image, position.PointSub(shapes.Point{X: 16, Y: 16}).ToImageOptions())
 	}
 }

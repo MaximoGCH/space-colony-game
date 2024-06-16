@@ -19,7 +19,12 @@ const (
 
 func UpdateRecipes(globalState *state.GlobalState) {
 	_, dy := ebiten.Wheel()
-	globalState.GameState.RecipeListControls.Scroll += int(dy * 20)
+	if dy > 0 {
+		globalState.GameState.RecipeListControls.Scroll += 20
+	} else if dy < 0 {
+		globalState.GameState.RecipeListControls.Scroll -= 20
+	}
+
 	mousePos := shapes.FromMousePosition()
 	if inpututil.IsMouseButtonJustPressed(ebiten.MouseButton0) && mousePos.X < 196 {
 		globalState.GameState.RecipeListControls.MouseOffset =
