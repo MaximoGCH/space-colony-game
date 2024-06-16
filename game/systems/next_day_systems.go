@@ -346,7 +346,7 @@ func UpdateNextDay(globalState *state.GlobalState) {
 		if globalState.GameState.NextDayState.Timer == 50 {
 			if personNum <= 0 {
 				globalState.GameState.Notifications.Add(models.Text,
-					"There are nor more astronauts in the colony. Game Over")
+					"There are not more astronauts in the colony. Game Over")
 			} else {
 				globalState.GameState.Days++
 				globalState.GameState.Notifications.Add(models.Text,
