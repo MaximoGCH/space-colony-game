@@ -5,4 +5,5 @@ type Scene int
 const (
 	GameScene = iota
 	MenuScene
+	LostScene
 )

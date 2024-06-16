@@ -19,6 +19,8 @@ func (g *Game) Update() error {
 	switch g.GlobalState.Scene {
 	case state.GameScene:
 		scenes.UpdateGameScene(g.GlobalState)
+	case state.MenuScene:
+		scenes.UpdateMenuScene(g.GlobalState)
 	}
 
 	return nil
@@ -28,6 +30,8 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	switch g.GlobalState.Scene {
 	case state.GameScene:
 		scenes.DrawGameScene(g.GlobalState, screen)
+	case state.MenuScene:
+		scenes.DrawMenuScene(g.GlobalState, screen)
 	}
 }
 
@@ -42,11 +46,10 @@ func Start() {
 		ScreenSize: shapes.Size{
 			Width: 912, Height: 513,
 		},
-		Db:    db.CreateDb(assets),
-		Scene: state.GameScene,
+		Db: db.CreateDb(assets),
 	}
 
-	scenes.StartGameScene(globalState)
+	scenes.StartMenuScene(globalState)
 
 	ebiten.SetWindowSize(1480, 820)
 	ebiten.SetWindowTitle("space-colony-game")
