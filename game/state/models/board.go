@@ -41,7 +41,7 @@ func CreateBoard() Board {
 	return Board{}
 }
 
-func (board *Board) RandomEmptyPlace() shapes.Point {
+func (board *Board) EmptyPlaces() []shapes.Point {
 	var emptyList []shapes.Point = make([]shapes.Point, 0, BoardSizeW)
 	for i := 1; i < BoardSizeW; i++ {
 		for j := 0; j < BoardSizeH; j++ {
@@ -51,6 +51,12 @@ func (board *Board) RandomEmptyPlace() shapes.Point {
 			}
 		}
 	}
+
+	return emptyList
+}
+
+func (board *Board) RandomEmptyPlace() shapes.Point {
+	emptyList := board.EmptyPlaces()
 
 	if len(emptyList) == 0 {
 		return shapes.Point{X: -1, Y: -1}

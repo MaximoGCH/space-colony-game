@@ -51,7 +51,7 @@ func DrawBoard(globalState *state.GlobalState, screen *ebiten.Image) {
 				}
 			} else {
 				easingOffset = shapes.Point{
-					X: structure.AnimationOffset.MaxValue - structure.AnimationOffset.EasingValue,
+					X: -structure.AnimationOffset.MaxValue + structure.AnimationOffset.EasingValue,
 					Y: 0,
 				}
 			}
