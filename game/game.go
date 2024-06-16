@@ -21,6 +21,8 @@ func (g *Game) Update() error {
 		scenes.UpdateGameScene(g.GlobalState)
 	case state.MenuScene:
 		scenes.UpdateMenuScene(g.GlobalState)
+	case state.LostScene:
+		scenes.UpdateLostScene(g.GlobalState)
 	}
 
 	return nil
@@ -32,6 +34,8 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		scenes.DrawGameScene(g.GlobalState, screen)
 	case state.MenuScene:
 		scenes.DrawMenuScene(g.GlobalState, screen)
+	case state.LostScene:
+		scenes.DrawLostScene(g.GlobalState, screen)
 	}
 }
 

@@ -22,5 +22,4 @@ type GameState struct {
 	RecipeListControls       *models.RecipeListControls
 
 	StartButton *models.Button
-	RetryButton *models.Button
 }

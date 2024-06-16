@@ -179,7 +179,8 @@ func UpdateNextDay(globalState *state.GlobalState) {
 
 		if globalState.GameState.NextDayState.Timer == 120 {
 			globalState.GameState.Notifications.Add(models.Text,
-				fmt.Sprintf("You need to roll at least a %v to find new resources", globalState.GameState.Days))
+				fmt.Sprintf("You need to roll at least a %v to find new resources",
+					globalState.GameState.NextDayState.FixedDay))
 		}
 
 		// wait for all lost cards
@@ -214,7 +215,7 @@ func UpdateNextDay(globalState *state.GlobalState) {
 					continue
 				}
 
-				if dice.FaceNumber >= globalState.GameState.Days {
+				if dice.FaceNumber >= globalState.GameState.NextDayState.FixedDay {
 					globalState.GameState.NextDayState.DiceResult = true
 					break
 				}
