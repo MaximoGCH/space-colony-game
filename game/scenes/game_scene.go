@@ -1,6 +1,8 @@
 package scenes
 
 import (
+	"image/color"
+
 	"github.com/MaximoGCH/space-colony-game/db"
 	"github.com/MaximoGCH/space-colony-game/game/common/shapes"
 	"github.com/MaximoGCH/space-colony-game/game/state"
@@ -120,6 +122,12 @@ func UpdateGameScene(globalState *state.GlobalState) {
 }
 
 func DrawGameScene(globalState *state.GlobalState, screen *ebiten.Image) {
+	screen.Fill(color.RGBA{
+		R: 203,
+		G: 129,
+		B: 117,
+		A: 255,
+	})
 	systems.DrawBoard(globalState, screen)
 	systems.DrawExplorerCardDrop(globalState, screen)
 	systems.DrawInventory(globalState, screen)

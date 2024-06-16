@@ -34,6 +34,19 @@ func UpdateBoard(globalState *state.GlobalState) {
 }
 
 func DrawBoard(globalState *state.GlobalState, screen *ebiten.Image) {
+	// draw board line
+	// cardDropImage := expanded_render.NewNineSliceSprite(
+	// 	globalState.Assets, "embed/sprites/dashed-line",
+	// 	(models.BoardSizeW-1)*models.GridSpace,
+	// 	(models.BoardSizeH)*models.GridSpace+30,
+	// )
+
+	// screen.DrawImage(cardDropImage, shapes.Point{
+	// 	X: models.BoardStartX + models.GridSize + 20,
+	// 	Y: models.BoardStartY - 15,
+	// }.ToImageOptions())
+
+	// draw structures
 	for i := 0; i < len(globalState.GameState.Board); i++ {
 		for j := 0; j < len(globalState.GameState.Board[i]); j++ {
 			// draw structure

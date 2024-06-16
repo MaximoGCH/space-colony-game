@@ -75,6 +75,10 @@ func (board *Board) AddStructure(screenSize shapes.Size, structure *db.Structure
 		X: BoardStartX, Y: BoardStartY,
 	})
 
+	if structure.Type == db.HouseLv1 {
+		structurePos = structurePos.PointSub(shapes.Point{X: 32, Y: 0})
+	}
+
 	cardDropXStartPos := (GridSize / 2) - ((structure.CardDropNumber * CardDropSize) / 2)
 	for i := 0; i < structure.CardDropGroupNumber; i++ {
 		cardDrop[i] = make([]*CardDrop, structure.CardDropNumber)
