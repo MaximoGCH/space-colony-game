@@ -49,8 +49,21 @@ func DrawRecipes(globalState *state.GlobalState, screen *ebiten.Image) {
 	}
 
 	rec := ebiten.NewImage(196, globalState.ScreenSize.Height)
-	rec.Fill(color.Black)
+	rec.Fill(color.RGBA{
+		R: 87,
+		G: 80,
+		B: 87,
+		A: 255,
+	})
 	screen.DrawImage(rec, shapes.Point{}.ToImageOptions())
+
+	custom_text.DrawOutlineText(screen,
+		"Guide",
+		position.PointAdd(shapes.Point{X: 90, Y: 0}),
+		globalState.Assets.GetFont("embed/fonts/Kubasta"),
+	)
+
+	position = position.PointAdd(shapes.Point{X: 0, Y: 16})
 
 	cardImage := globalState.Assets.GetSprite("embed/sprites/card")
 
